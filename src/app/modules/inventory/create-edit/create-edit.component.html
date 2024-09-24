@@ -1,20 +1,21 @@
+<h2>Save Inventory</h2>
 <form [formGroup]="createForm" (ngSubmit)="createNew()">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="padding-value">
         <mat-label>Item Name</mat-label>
         <input matInput formControlName="itemName" placeholder="Item Name">
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="padding-value">
         <mat-label>Quantity</mat-label>
         <input matInput type="number" formControlName="quantity" placeholder="Quantity">
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="padding-value">
         <mat-label>Item Code</mat-label>
         <input matInput formControlName="code" placeholder="itemCode">
     </mat-form-field>
 
-    <button style="margin-left: 10px;" [disabled]="!createForm.valid" type="submit" mat-raised-button color="primary" matSuffix>
+    <button class="padding-value" style="margin-left: 10px;" [disabled]="!createForm.valid" type="submit" mat-raised-button color="primary" matSuffix>
         Save
     </button>
 </form>

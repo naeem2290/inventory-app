@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./inventory-list.component.scss']
 })
 export class PokemonListComponent {
-  public displayedColumns: string[] = ['name', 'quantity', 'code'];
+  public displayedColumns: string[] = ['name', 'quantity', 'code', 'action'];
   public dataSource: {itemName: string, quantity: number, code: string}[] = [];
   public filtered: {itemName: string, quantity: number, code: string}[] = [];
   public selectedItem!: {itemName: string, quantity: number, code: string};

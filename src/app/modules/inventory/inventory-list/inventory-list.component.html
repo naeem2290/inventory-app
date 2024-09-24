@@ -1,0 +1,43 @@
+<div *ngIf="previewMode === 'List'" class="container">
+  <div style="display: flex;">
+    <mat-form-field>
+      <input matInput
+        placeholder="Search here..." (input)="searchItem($event)">
+    </mat-form-field>
+    <button mat-raised-button color="primary" matSuffix>
+      clear
+    </button>
+  </div>
+  <button mat-raised-button color="primary" (click)="previewMode = 'Create'">
+    Create
+  </button>
+  <div class="table-container">
+    <table mat-table [dataSource]="filtered">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Item Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.itemName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.quantity}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef> Item Code </th>
+        <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns; let i= index" (click)="onRowClick(row, i)"></tr>
+    </table>
+    <div *ngIf="filtered.length === 0" class="no-result-text">
+      No Result Found
+    </div>
+  </div>
+</div>
+<div *ngIf="previewMode === 'Create' || previewMode === 'Edit'" class="container">
+  <app-pokemon-detail [mode]="previewMode" [data]="selectedItem" (newItem)="newItemAdded($event)"></app-pokemon-detail>
+</div>

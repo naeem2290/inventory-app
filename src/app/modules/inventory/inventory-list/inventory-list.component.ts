@@ -36,9 +36,13 @@ export class PokemonListComponent {
       this.filtered = this.dataSource.filter(ele => ele.itemName.includes(inputValue) || ele.code.includes(inputValue));
     }
   }
+
+  setMode() {
+    this.previewMode = 'Create';
+    this.selectedItem={itemName: '', quantity: 0, code: ''};
+  }
   
   onRowClick(element: {itemName: string, quantity: number, code: string}, index: number) {
-    console.log('in', index);
     this.selectedIndex = index;
     this.selectedItem = element
     this.previewMode = "Edit";
